@@ -11,7 +11,7 @@ breakdown.
 
 ## Status
 
-- [ ] M1 — Marquez up via docker-compose
+- [x] M1 — Marquez up via docker-compose
 - [ ] M2 — Manual OpenLineage emission for ingestion
 - [ ] M3 — Airflow orchestration with auto lineage
 - [ ] M4 — dbt transformations with lineage
