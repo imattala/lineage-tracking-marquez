@@ -14,6 +14,9 @@ dbt/logs/
 airflow/logs/
 airflow/plugins/__pycache__/
 
+# Generated data (reproducible via pipeline/generate_data.py)
+pipeline/data/*.csv
+
 # Env / secrets
 .env
 
