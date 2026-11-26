@@ -40,5 +40,25 @@ services:
     depends_on:
       - marquez
 
+  # Landing + dbt target - separate from marquez-db on purpose, mirroring
+  # the real-world split between orchestration/metadata state and actual
+  # data.
+  warehouse-db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: warehouse
+      POSTGRES_PASSWORD: warehouse
+      POSTGRES_DB: warehouse
+    ports:
+      - "5432:5432"
+    volumes:
+      - warehouse-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U warehouse"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
 volumes:
   marquez-db-data:
+  warehouse-db-data:
